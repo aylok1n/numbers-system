@@ -1,1 +1,38 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Massivi</title>
+    <link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    
+    <div id="str0" hidden>
+        <p><output id="player"></output></p>
+        <p><output id="score"></output></p>
+        <p>Время:<output id="timer">0</output></p>
+        <p><output id="exit"></output></p>
+    </div>
+    <div class="center" id="str1">
+        <input id="login" placeholder="Введите логин"></input>
+        <button id="start" onclick="start()">Начать игру</button>
+    </div>
+    <div class="center" id="str2" hidden>
+        <!-- <span class="span" id="0"></span> -->
+        <span class="span" onclick="swap(this);" id="0"></span>
+        <span class="span" onclick="swap(this);" id="1"></span>
+        <span class="span" onclick="swap(this);" id="2"></span>
+        <span class="span" onclick="swap(this);" id="3"></span>
+        <span class="span" onclick="swap(this);" id="4"></span>
+        <span class="span" onclick="swap(this);" id="5"></span>
+        <span class="span" onclick="swap(this);" id="6"></span>
+        <span class="span" onclick="swap(this);" id="7"></span>
+        <span class="span" onclick="swap(this);" id="8"></span>
+        <span class="span" onclick="swap(this);" id="9"></span>
+
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
