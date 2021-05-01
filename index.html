@@ -10,45 +10,72 @@
     
     <div id="HUDBlock" hidden>
         <p><output id="player"></output></p>
+        <p><output id="level"></output></p>
         <p><output id="score"></output></p>
-        <p>Время:<output id="timer">0</output></p>
+        <p>Время: <output id="timer">0</output></p>
         <p><output id="exit"></output></p>
     </div>
+
     <div class="center" id="StartScreen">
         <input id="login" placeholder="Введите логин"></input>
         <button id="start" onclick="start()">Начать игру</button>
     </div>
+
     <div class="center" id="ChangeNum" hidden>
         <p>
-            <span class="span" onclick="swap(this);" id="2">2</span>
-            <span class="span" onclick="swap(this);" id="3">3</span>
-            <span class="span" onclick="swap(this);" id="4">4</span>
+            <h4>Выберете основание системы счисления</h4>
         </p>
         <p>
-            <span class="span" onclick="swap(this);" id="5">5</span>
-            <span class="span" onclick="swap(this);" id="6">6</span>
-            <span class="span" onclick="swap(this);" id="7">7</span>
+            <span class="span" onclick="setBase(2);" id="2">2</span>
+            <span class="span" onclick="setBase(3);" id="3">3</span>
+            <span class="span" onclick="setBase(4);" id="4">4</span>
         </p>
         <p>
-            <span class="span" onclick="swap(this);" id="8">8</span>
-            <span class="span" onclick="swap(this);" id="9">9</span>
-            <span class="span" onclick="swap(this);" id="10">10</span>
+            <span class="span" onclick="setBase(5);" id="5">5</span>
+            <span class="span" onclick="setBase(6);" id="6">6</span>
+            <span class="span" onclick="setBase(7);" id="7">7</span>
         </p>
         <p>
-            <span class="span" onclick="swap(this);" id="11">11</span>
-            <span class="span" onclick="swap(this);" id="12">12</span>
-            <span class="span" onclick="swap(this);" id="13">13</span>
+            <span class="span" onclick="setBase(8);" id="8">8</span>
+            <span class="span" onclick="setBase(9);" id="9">9</span>
+            <span class="span" onclick="setBase(10);" id="10">10</span>
+        </p>
+        <p>
+            <span class="span" onclick="setBase(11);" id="11">11</span>
+            <span class="span" onclick="setBase(12);" id="12">12</span>
+            <span class="span" onclick="setBase(13);" id="13">13</span>
         </p>    
         <p>
-            <span class="span" onclick="swap(this);" id="14">14</span>
-            <span class="span" onclick="swap(this);" id="15">15</span>
-            <span class="span" onclick="swap(this);" id="16">16</span>
+            <span class="span" onclick="setBase(14);" id="14">14</span>
+            <span class="span" onclick="setBase(15);" id="15">15</span>
+            <span class="span" onclick="setBase(16);" id="16">16</span>
         </p>
-    </div>
-    <div class="center" id="Game" hidden>
 
     </div>
-    <div class="Win" id="WinScreen" hidden></div>
+
+    <div class="center" id="Game" hidden>
+        <h5 class="game"  id="numOutput"></h5>
+
+        <button class="bigspan" onclick="getActNumber(0)" id="1000000">0</button>
+        <button class="bigspan" onclick="getActNumber(1)" id="0100000">0</button>
+        <button class="bigspan" onclick="getActNumber(2)" id="0010000">0</button>
+        <button class="bigspan" onclick="getActNumber(3)" id="0001000">0</button>
+        <button class="bigspan" onclick="getActNumber(4)" id="0000100">0</button>
+        <button class="bigspan" onclick="getActNumber(5)" id="0000010">0</button>
+        <button class="bigspan" onclick="getActNumber(6)" id="0000001">0</button>
+        <a class="base" id="base" tabindex="1"></a>
+
+        <p>
+            <button onclick="minusOne()">-1</button>
+            <button onclick="plusOne()">+1</button>
+        </p>
+
+    </div>
+
+
+    <div class="Win" id="WinScreen" hidden>
+
+    </div>
     
     <script src="js/main.js"></script>
 </body>

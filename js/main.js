@@ -1,49 +1,125 @@
-let scoreCounter = document.getElementById('score');
-let login;
-const numbers = [];
-let span = document.querySelectorAll('span');
-let spanValues = [];
-let bestResult = [];
-let currentArr = [];
+let login
+let levelCounter = document.getElementById('level')
+let scoreCounter = document.getElementById('score')
+let initNum = 0
+let inc = 0 //на сколько изменить
+let score = 0; // счет
+let level = 0  //уровень
+let bool = true // добавить или убавить
+let base = 0 // основание системы счисления
+let transNum = [0,0,0,0,0,0,0]
+let actNum = null
 
-let score = 0;
+function print(){
+  scoreCounter.innerHTML = "Ходов: " + score;
+  levelCounter.innerHTML = "Уровень: " + level + " /30"
 
+  document.getElementById('1000000').innerHTML = transNum[0]
+  document.getElementById('0100000').innerHTML = transNum[1]
+  document.getElementById('0010000').innerHTML = transNum[2]
+  document.getElementById('0001000').innerHTML = transNum[3]
+  document.getElementById('0000100').innerHTML = transNum[4]
+  document.getElementById('0000010').innerHTML = transNum[5]
+  document.getElementById('0000001').innerHTML = transNum[6]
+  document.getElementById('base').innerHTML = base
+}
 
 function start() {
   login = document.getElementById("login").value
   document.getElementById("HUDBlock").hidden = false;
   document.getElementById("StartScreen").hidden = true;
-  document.getElementById("str2").hidden = false;
+  document.getElementById("ChangeNum").hidden = false;
+  document.getElementById("Game").hidden = true;
+  document.getElementById("WinScreen").hidden = true;
   document.getElementById('player').innerHTML = "Игрок: " + login;
   window.setInterval(timer, 1000);
 
-  scoreCounter.innerHTML = "Ходов: " + score;
+
 
   alert("Привет " + login + " Тебе дан список чисел, для победы тебе нужно переставить их в порядке возрастания. Для перестановки кликни на 2 нужных числа. Желаю Удачи! ");
 
-
-  
-  let arr = spanValues.slice(0);
-  bestResult = arr.sort(function (a, b) {
-    if (a > b)
-      return 1;
-    if (a < b)
-      return -1;
-    return 0
-  });
-  console.log(bestResult);
-
   return login;
 }
-
-
 
 function timer() {
   var elem = document.getElementById('timer');
   elem.value = parseInt(elem.value) + 1; //parseInt преобразует строку в число
 }
 
+function setBase(elem){
+  base = elem
+  startGame()
+}
 
+function startGame() {
+  document.getElementById("ChangeNum").hidden = true;
+  document.getElementById("Game").hidden = false;
+
+  initNum = Math.floor(Math.random( ) * (100 - 10 + 1)) + 10 //задает рандомное значение в десятичной
+  inc = Math.floor(Math.random( ) * (2 - 1 + 1)) + 1 //задает рандомное число для сложения
+  bool = Math.random() < 0.5 // задает рандомно true/ false
+
+  transNum.push(...parseInt(initNum, 10).toString(base))
+  for(let i = 0; transNum.length-7; i++){
+    transNum.shift()
+  }
+  transNum = transNum.map(function (item) {
+    return parseFloat(item);
+  });
+
+  let out = ( bool == true) ? "Прибавьте к числу  " : "Вычтите из числа  ";
+
+  console.log("нач " + initNum, "изм " + inc, "д/у " + bool,"осн " + base,"итог " + transNum)
+  print()
+
+  document.getElementById("numOutput").innerHTML = out + initNum + "  число  " + inc;
+
+} 
+
+function getActNumber(Num){
+  actNum = Num
+  console.log("выьран " + actNum + " элемент")
+}
+
+function checkWin() {
+  let answer = (bool == true) ? initNum + inc : initNum - inc
+  let a = transNum.toString()
+  let b = +a.replace(/[\s.,%]/g, '')
+  let checker = parseInt(b, base).toString(10)
+  console.log('должно получиться ' + answer)
+  console.log('а у вас'+ checker)
+  if(answer == checker){
+    alert('Ура. Вы прошли данный уровень. вы молодец')
+    level += 1;
+    startGame()
+    print()
+  }
+  
+}
+
+function plusOne() { 
+  if(transNum[actNum] < base - 1){
+    transNum[actNum] += 1 
+  } else{
+    alert("цифры в числе не могут превышать основание системы счисления" )
+  }
+  console.clear
+  console.log(transNum)
+  print()
+  checkWin()
+  score += 1
+}
+
+function minusOne() {
+  if(transNum[actNum] != 0){
+    transNum[actNum] -= 1
+  }
+  console.clear
+  console.log(transNum)
+  print()
+  checkWin()
+  score += 1
+}
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // ПОБЕДНЫЙ ЭКРАН БРАТЬ ОТСЕДА
@@ -74,4 +150,3 @@ function timer() {
 
 //   return clonedElement1;
 // }
-
