@@ -10,6 +10,7 @@ let bool = true // добавить или убавить
 let base = 0 // основание системы счисления
 let transNum 
 let actNum = null
+var archive = [];
 
 function print(){
   scoreCounter.innerHTML = "Ходов: " + score;
@@ -99,31 +100,48 @@ function checkWin() {
   console.log('должно получиться ' + answer)
   console.log('а у вас'+ checker)
   if(answer == checker){
-    alert('Ура. Вы прошли данный уровень. вы молодец')
+    setTimeout(alert('Ура. Вы прошли данный уровень. вы молодец'), 2000)
     level += 1;
     if(level == 30){
-      youWin()
+      setTimeout(youWin, 2000)
     }
     else{
       startGame()
       print()
     }
   }
-  
+}
+
+function allStorage() {
+
+  for (var i = 0; i<localStorage.length; i++) {
+      archive[i] = localStorage.getItem(localStorage.key(i));
+  }
+  return archive
+}
+function bubbleSortConcept1(arr) {
+  for (let j = arr.length - 1; j > 0; j--) {
+    for (let i = 0; i < j; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+      }
+    }
+  }
 }
 
 function youWin(){
   document.getElementById("Game").hidden = true;
   document.getElementById("Win").hidden = false;
-  localStorage.setItem( login, score,)
-  let top 
-  for(let i=0; i<localStorage.length; i++) {
-    let key = localStorage.key(i);
-    top.push(`${key}: ${localStorage.getItem(key)}`);
-  }
-  top.sort((a,b) => a-b)
+  localStorage.setItem(score, login)
+
+  allStorage()
+  bubbleSortConcept1(archive) 
+
   
-  document.getElementById('topOutput').innerHTML = 'Вот топ 10 игроков ' + top
+  
+  document.getElementById('topOutput').innerHTML = 'Вот топ 10 игроков ' + archive
 }
 
 

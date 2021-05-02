@@ -6,9 +6,9 @@
     <link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 
-<body class="center">
+<body class="center" >
     
-    <div  id="HUDBlock" hidden>
+    <div style="left: 0%;"  id="HUDBlock" hidden>
         <p><output id="player"></output></p>
         <p><output id="level"></output></p>
         <p><output id="score"></output></p>
@@ -16,9 +16,9 @@
         <p><output id="exit"></output></p>
     </div>
 
-    <div class="center" id="StartScreen">
+    <div style="background: url(css/src/background.jpg);" class="center" id="StartScreen">
         
-        <div style="background: url(css/src/background.jpg);">
+        
             <h6 style="color: white; border: yellowgreen; border-width: 2px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xx-large;">
                 THE NUMBER SYSTEM 
                 <h3 style="color: white; border: yellowgreen; border-width: 2px;  font-size: xx-large;"> 
@@ -36,7 +36,6 @@
             <source src="sound.mp3" type="audio/mp3">
         </audio>
         <p><button class="bigspan" onclick="demo()">ДЕМО</button></p>
-    </div>
     </div>
 
     <div class="center" id="ChangeNum" hidden>
@@ -57,16 +56,6 @@
             <span class="span" onclick="setBase(8);" id="8">8</span>
             <span class="span" onclick="setBase(9);" id="9">9</span>
             <span class="span" onclick="setBase(10);" id="10">10</span>
-        </p>
-        <p>
-            <span class="span" onclick="setBase(11);" id="11">11</span>
-            <span class="span" onclick="setBase(12);" id="12">12</span>
-            <span class="span" onclick="setBase(13);" id="13">13</span>
-        </p>    
-        <p>
-            <span class="span" onclick="setBase(14);" id="14">14</span>
-            <span class="span" onclick="setBase(15);" id="15">15</span>
-            <span class="span" onclick="setBase(16);" id="16">16</span>
         </p>
 
     </div>
@@ -89,24 +78,21 @@
 
     </div>
 
-
-    <div class="Win" id="Win" hidden style="background: url(css/src/wingif.gif); height: 100%;">
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <h6>Ура победа</h6>
-    <div id="topOutput"></div>
+    <div id="Win">
+        
+        <div class="Win"  hidden style="background: url(css/src/wingif.gif); height: 100%;">
+            <div style="color: yellowgreen;" id="topOutput"></div>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+            <h6>Ура победа</h6>
+        </div>  
+        
 
     </div>
     <footer>
