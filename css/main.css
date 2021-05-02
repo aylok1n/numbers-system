@@ -87,15 +87,19 @@ footer img{
     }
 	20% {
 		transform: translate3d(0px, 70px, 0px);
+		visibility: hidden;
 	}
 	40% {
 		transform: translate3d(700px, 70px, 0px);
+		visibility: hidden;
 	}
 	60% {
 		transform: translate3d(700px, -70px, 0px);
+		visibility: hidden;
 	}
 	80% {
 		transform: translate3d(0px, -70px, 0px);
+		visibility: hidden;
 	}
 
     100% {

@@ -8,7 +8,7 @@ let score = 0; // счет
 let level = 0  //уровень
 let bool = true // добавить или убавить
 let base = 0 // основание системы счисления
-let transNum = [0,0,0,0,0,0,0]
+let transNum 
 let actNum = null
 
 function print(){
@@ -32,7 +32,7 @@ function start() {
   document.getElementById("StartScreen").hidden = true;
   document.getElementById("ChangeNum").hidden = false;
   document.getElementById("Game").hidden = true;
-  document.getElementById("WinScreen").hidden = true;
+  document.getElementById("Win").hidden = true;
   document.getElementById('player').innerHTML = "Игрок: " + login;
   window.setInterval(timer, 1000);
 
@@ -53,6 +53,12 @@ function setBase(elem){
   startGame()
 }
 
+function demo(){
+  base = 10
+  
+  startGame()
+}
+
 function startGame() {
   document.getElementById("ChangeNum").hidden = true;
   document.getElementById("Game").hidden = false;
@@ -60,7 +66,7 @@ function startGame() {
   initNum = Math.floor(Math.random( ) * (100 - 10 + 1)) + 10 //задает рандомное значение в десятичной
   inc = Math.floor(Math.random( ) * (2 - 1 + 1)) + 1 //задает рандомное число для сложения
   bool = Math.random() < 0.5 // задает рандомно true/ false
-
+  transNum = [0,0,0,0,0,0,0]
   transNum.push(...parseInt(initNum, 10).toString(base))
   for(let i = 0; transNum.length-7; i++){
     transNum.shift()
