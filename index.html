@@ -6,9 +6,9 @@
     <link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 
-<body>
+<body class="center">
     
-    <div id="HUDBlock" hidden>
+    <div  id="HUDBlock" hidden>
         <p><output id="player"></output></p>
         <p><output id="level"></output></p>
         <p><output id="score"></output></p>
@@ -17,8 +17,25 @@
     </div>
 
     <div class="center" id="StartScreen">
-        <input id="login" placeholder="Введите логин"></input>
-        <button id="start" onclick="start()">Начать игру</button>
+        
+        <div style="background: url(css/src/background.jpg);">
+            <h6 style="color: white; border: yellowgreen; border-width: 2px; font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; font-size: xx-large;">
+                THE NUMBER SYSTEM 
+                <h3 style="color: white; border: yellowgreen; border-width: 2px;  font-size: xx-large;"> 
+                    Тебе дан список чисел, для победы тебе нужно переставить их в порядке возрастания. Для перестановки кликни на 2 нужных числа. Желаю Удачи! "
+            </h6>
+            <p>
+                <input id="login" placeholder="Введите логин"></input>
+                <button id="start" onclick="start()">Начать игру</button>
+            </p>  
+        
+
+        <output id="startAlert" style="color: white;">Удачи</output>
+        <p style="color: white;">Рекомендуется включить музыку</p>
+        <audio  autoplay loop preload controls>
+            <source src="sound.mp3" type="audio/mp3">
+        </audio>
+    </div>
     </div>
 
     <div class="center" id="ChangeNum" hidden>
@@ -55,29 +72,38 @@
 
     <div class="center" id="Game" hidden>
         <h5 class="game"  id="numOutput"></h5>
-
-        <button class="bigspan" onclick="getActNumber(0)" id="1000000">0</button>
-        <button class="bigspan" onclick="getActNumber(1)" id="0100000">0</button>
-        <button class="bigspan" onclick="getActNumber(2)" id="0010000">0</button>
-        <button class="bigspan" onclick="getActNumber(3)" id="0001000">0</button>
-        <button class="bigspan" onclick="getActNumber(4)" id="0000100">0</button>
-        <button class="bigspan" onclick="getActNumber(5)" id="0000010">0</button>
-        <button class="bigspan" onclick="getActNumber(6)" id="0000001">0</button>
-        <a class="base" id="base" tabindex="1"></a>
-
-        <p>
-            <button onclick="minusOne()">-1</button>
-            <button onclick="plusOne()">+1</button>
-        </p>
-
-    </div>
-
-
-    <div class="Win" id="WinScreen" hidden>
+        <div style="background-color: red; height: 90px;">
+            <button class="button" onclick="minusOne()">-1</button>
+            <button class="bigspan" onclick="getActNumber(0)" ><div id="1000000" class="figure"></div></button>
+            <button class="bigspan" onclick="getActNumber(1)" ><div id="0100000" class="figure"></div></button>
+            <button class="bigspan" onclick="getActNumber(2)" ><div id="0010000" class="figure"></div></button>
+            <button class="bigspan" onclick="getActNumber(3)" ><div id="0001000" class="figure"></div></button>
+            <button class="bigspan" onclick="getActNumber(4)" ><div id="0000100" class="figure"></div></button>
+            <button class="bigspan" onclick="getActNumber(5)" ><div id="0000010" class="figure"></div></button>
+            <button class="bigspan" onclick="getActNumber(6)" ><div id="0000001" class="figure"></div></button>
+            <span id="base" class="base"></span>
+            <button class="button" onclick="plusOne()">+1</button>
+  
+        </div>
 
     </div>
+
+
+    <div class="Win" id="Win" hidden style="background: url(css/src/wingif.gif); height: 100%;">
+    <h6>Ура победа</h6>
+
+    <div id="topOutput"></div>
+
+    </div>
+    <footer>
+        <img >
+    </footer>
     
     <script src="js/main.js"></script>
 </body>
+
+<footer>
+    <img src="css/src/footer.png" alt="Fantazihuis footer" />
+</footer>
 
 </html>

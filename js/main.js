@@ -1,6 +1,7 @@
 let login
 let levelCounter = document.getElementById('level')
 let scoreCounter = document.getElementById('score')
+let figures = document.getElementsByClassName('figure')
 let initNum = 0
 let inc = 0 //на сколько изменить
 let score = 0; // счет
@@ -25,6 +26,7 @@ function print(){
 }
 
 function start() {
+  alert('НАЧНЕМ?')
   login = document.getElementById("login").value
   document.getElementById("HUDBlock").hidden = false;
   document.getElementById("StartScreen").hidden = true;
@@ -36,7 +38,7 @@ function start() {
 
 
 
-  alert("Привет " + login + " Тебе дан список чисел, для победы тебе нужно переставить их в порядке возрастания. Для перестановки кликни на 2 нужных числа. Желаю Удачи! ");
+  document.getElementById('startAlert').innerHTML = "Привет " + login + " Тебе дан список чисел, для победы тебе нужно переставить их в порядке возрастания. Для перестановки кликни на 2 нужных числа. Желаю Удачи! "
 
   return login;
 }
@@ -76,6 +78,8 @@ function startGame() {
 
 } 
 
+
+
 function getActNumber(Num){
   actNum = Num
   console.log("выьран " + actNum + " элемент")
@@ -91,35 +95,63 @@ function checkWin() {
   if(answer == checker){
     alert('Ура. Вы прошли данный уровень. вы молодец')
     level += 1;
-    startGame()
-    print()
+    if(level == 30){
+      youWin()
+    }
+    else{
+      startGame()
+      print()
+    }
   }
   
 }
 
+function youWin(){
+  document.getElementById("Game").hidden = true;
+  document.getElementById("Win").hidden = false;
+  localStorage.setItem( login, score,)
+  let top 
+  for(let i=0; i<localStorage.length; i++) {
+    let key = localStorage.key(i);
+    top.push(`${key}: ${localStorage.getItem(key)}`);
+  }
+  top.sort((a,b) => a-b)
+  
+  document.getElementById('topOutput').innerHTML = 'Вот топ 10 игроков ' + top
+}
+
+
+
 function plusOne() { 
   if(transNum[actNum] < base - 1){
-    transNum[actNum] += 1 
+    figures[actNum].style.animation = 'rotationPlus 2s linear'
+    transNum[actNum] += 1
   } else{
     alert("цифры в числе не могут превышать основание системы счисления" )
   }
   console.clear
   console.log(transNum)
-  print()
+  
+  setTimeout(print, 1000)
   checkWin()
   score += 1
 }
 
 function minusOne() {
+  
   if(transNum[actNum] != 0){
-    transNum[actNum] -= 1
+    figures[actNum].style.animation = 'rotationMinus 2s linear'
+    transNum[actNum] -= 1   
   }
   console.clear
   console.log(transNum)
-  print()
+  
+  setTimeout(print, 1000)
   checkWin()
   score += 1
 }
+
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // ПОБЕДНЫЙ ЭКРАН БРАТЬ ОТСЕДА
